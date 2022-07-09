@@ -31,7 +31,7 @@ jobs:
       - run: export REPO_PATH=$(pwd)
       # install google test
       - run: sudo apt-get update && sudo apt-get install libgtest-dev libgmock-dev && sudo apt-get install libtbb-dev
-      - run: cd /usr/src/googletest/ && sudo mkdir build && cd build
+      - run: cd /usr/src/gtest/ && sudo mkdir build && cd build
       - run: sudo cmake .. && sudo make
       - run: sudo cp lib/* /usr/lib
       # go back to the repo
