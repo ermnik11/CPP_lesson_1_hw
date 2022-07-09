@@ -30,8 +30,10 @@ jobs:
       # install google test
       - run: sudo apt-get install libgtest-dev && cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make && sudo cp lib/* /usr/lib && sudo ln -s /usr/lib/libgtest.a /usr/local/lib/libgtest.a && sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/libgtest_main.a
       # go back to the repo
-      - run: ls
-      - run: ./build.sh
+      - run: cmake -DROOT_DIR="" -DPATCH_VERSION=${{ github.run_number }} .
+      - run: cmake --build .
+      - run: cmake --build . --target test
+      - run: cmake --build . --target package
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
