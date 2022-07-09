@@ -29,7 +29,6 @@ target_link_libraries(helloworld_cli
 target_link_libraries(test_version
     helloworld
     GTest::gtest
-    GTest::gmock
     ${PThreadLib}
 )
 
