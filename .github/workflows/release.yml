@@ -30,10 +30,7 @@ jobs:
       # save current path
       - run: export REPO_PATH=$(pwd)
       # install google test
-      - run: sudo apt-get update && sudo apt-get install libgtest-dev libgmock-dev && sudo apt-get install libtbb-dev
-      - run: cd /usr/src/gtest/ && sudo mkdir build && cd build
-      - run: sudo cmake .. && sudo make
-      - run: sudo cp lib/* /usr/lib
+      - run: sudo apt-get install libgtest-dev && cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make && sudo cp *.a /usr/lib && sudo ln -s /usr/lib/libgtest.a /usr/local/lib/libgtest.a && sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/libgtest_main.a
       # go back to the repo
       - run: cd ${REPO_PATH} && ./build.sh
       - name: Create Release
